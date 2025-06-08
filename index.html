@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flip Clock</title>
+  <style>
+    body {
+      background-color: #000000ab;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .clock {
+      display: flex;
+      gap: 10px;
+    }
+
+    .flip-card {
+      background-color: #c4bebe;
+      color: rgb(14, 9, 9);
+      font-size: 100px;
+      width: 160px;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      perspective: 1000px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .digit {
+      animation: flip 0.7s ease-in-out;
+    }
+
+    @keyframes flip {
+      0% {
+        transform: rotateX(0deg);
+      }
+      50% {
+        transform: rotateX(-90deg);
+        opacity: 0.000000001;
+      }
+      100% {
+        transform: rotateX(-180deg);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div class="flip-card" id="hour"></div>
+    <div class="flip-card" id="minute"></div>
+    <div class="flip-card" id="second"></div>
+  </div>
+
+  <script>
+    function pad(n) {
+      return n < 10 ? '0' + n : n;
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const h = pad(now.getHours());
+      const m = pad(now.getMinutes());
+      const s = pad(now.getSeconds());
+
+      document.getElementById('hour').textContent = h;
+      document.getElementById('minute').textContent = m;
+      document.getElementById('second').textContent = s;
+
+      document.getElementById('hour').classList.add('digit');
+      document.getElementById('minute').classList.add('digit');
+      document.getElementById('second').classList.add('digit');
+
+      setTimeout(() => {
+        document.getElementById('hour').classList.remove('digit');
+        document.getElementById('minute').classList.remove('digit');
+        document.getElementById('second').classList.remove('digit');
+      }, 700);
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>

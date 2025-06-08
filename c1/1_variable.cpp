@@ -22,6 +22,7 @@
 // C++ Identifiers --> names of class, variables, methods
 
 //Points to remember about identifiers
+
 //Rule1 --> All identifiers should begin with a letter (A to Z or a to z), currency character ($) or an underscore(_).
 //Rule2 --> After the first character, identifiers can have any combination of characters.
 //Rule3 --> A keyword cannot be used as an identifier.
