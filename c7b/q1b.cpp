@@ -4,21 +4,20 @@
 #include<vector>
 using namespace std;
 void sotrZerosAndOnes(vector<int> &v){
-    int zeroes_count = 0;
+    int left_ptr =0;
+    int right_ptr =v.size()-1;
 
-    // counting zeroes
-    for(int ele: v){
-        if (ele == 0){
-            zeroes_count++;
+    while(left_ptr<right_ptr){
+        if(v[left_ptr]==1 && v[right_ptr]==0){
+            v[left_ptr++]=0;
+            v[right_ptr--]=1;
         }
-    }
 
-    for(int i=0; i<v.size(); i++){
-        if(i<zeroes_count){
-            v[i]=0;
+        if(v[left_ptr]==0){
+            left_ptr++;
         }
-        else{
-            v[i]=1;
+        if(v[right_ptr]==1){
+            right_ptr--;
         }
     }
 }
@@ -30,16 +29,16 @@ int main(){
     vector<int> v;
 
     for(int i=0; i<n; i++){
-        int ele; cin>>ele;
+        int ele;
+        cin>>ele;
         v.push_back(ele);
     }
 
     sotrZerosAndOnes(v);
+
     for(int i=0; i<n; i++){
         cout<<v[i]<<" ";
     }
     cout<<endl;
     return 0; 
 }
-
-// 22:13
