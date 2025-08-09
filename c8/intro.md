@@ -24,3 +24,9 @@
 > representing grids
 > faster access
 > predefined size
+
+## 2D vectors
+> vector of vector datatype
+--> vector<vector<datatype>> vector_name
+eg:- a 2D vector of size(n, m)
+--> vector<vector<datatype>> vec(n, vectot<int>(m));
